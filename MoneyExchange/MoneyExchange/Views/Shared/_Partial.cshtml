@@ -1,0 +1,69 @@
+﻿@model MoneyExchange.DTO.MoneyExchangeViewModel
+
+<div id="update">
+    <h2 class="text-center">MoneyExchange</h2>
+    <form asp-action="CheckExchange" asp-controller="home" method="post" data-ajax="true" data-ajax-mode="replase" data-ajax-method="post" data-ajax-update="#update" data-ajax-loading="#spinner" class="form-horizontal" role="form" enctype="multipart/form-data">
+
+        <div class="container">
+            <div class="form-row">
+                <div class="col-mb-4">
+
+                    <label asp-for="@Model.ExchangeHistory.FromAmount" class="singleedit">Amount</label>
+
+                    <input id="FromAmount" type="text" asp-for="@Model.ExchangeHistory.FromAmount" class="form-control is-invalid" aria-describedby="validationServer03Feedback" required />
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        Please write fields.
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                    <label>Сurrency</label>
+                    <select class="custom-select form-control " asp-for="@Model.ExchangeHistory.FromCurrency" asp-items="@(new SelectList(Model.Money.Money, "Value","Key"))">
+                    </select>
+                </div>
+                <div class="col-mb-4">
+                    <label asp-for="@Model.ExchangeHistory.ToAmount" class="singleedit">Converted to</label>
+
+                    <input id="ToAmount" type="text" asp-for="@Model.ExchangeHistory.ToAmount" class="form-control is-invalid" aria-describedby="validationServer03Feedback" required />
+                    <div id="validationServer03Feedback" class="invalid-feedback">
+                        Please write fields.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label>Сurrency</label>
+                    <select class="custom-select form-control " asp-for="@Model.ExchangeHistory.ToCurrency" asp-items="@(new SelectList(Model.Money.Money, "Value","Key"))">
+                    </select>
+                </div>
+
+            </div>
+            <div class="form-row">
+                @if (Model.Money.Count==1)
+                {
+                    <div class="col-sm-8 col-md-10">
+                        <label></label>
+                    </div>
+                }
+                else 
+                {
+                    <div class="col-sm-8 col-md-10">
+                        <label>@Model.ExchangeHistory.FromCurrency = @Model.ExchangeHistory.ToCurrency  </label>
+                    </div>
+                }
+                
+
+                <div class="col-sm-10 col-md-2">
+                    <button type="submit" class="btn btn-primary">Exchange</button>
+                </div>
+            </div>
+                </div>
+        <div class="d-flex justify-content-center">
+            <div class="spinner-grow" role="status" id="spinner" style="width: 3rem; height: 3rem; display: none" >
+                <span class="sr-only">Загрузка...</span>
+            </div>
+        </div>
+           
+    </form>
+
+</div>
+
+

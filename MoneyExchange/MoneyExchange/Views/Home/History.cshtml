@@ -1,0 +1,35 @@
+﻿@model IEnumerable<History> 
+<table class="display" id="example">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">FromAmount</th>
+            <th scope="col">FromCurrency</th>
+            <th scope="col">ToAmount</th>
+            <th scope="col">ToCurrency</th>
+            <th scope="col">Date</th>
+            
+
+        </tr>
+    </thead>
+    @if (Model != null)
+    {
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.FromAmount</td>
+                <td>@item.FromCurrency</td>
+                <td>@item.ToAmount</td>
+                <td>@item.ToCurrency</td>
+                <td>@item.Date</td>
+            </tr>
+
+            }
+
+        </tbody>
+    }
+</table>
